@@ -7,28 +7,24 @@
 [![Build](https://img.shields.io/travis/mariomka/vue-datetime/v1.x.svg?style=flat-square)](https://travis-ci.org/mariomka/vue-datetime)
 [![Coverage](https://img.shields.io/codecov/c/github/mariomka/vue-datetime/v1.x.svg?style=flat-square)](https://codecov.io/gh/mariomka/vue-datetime)
 
-> Mobile friendly datetime picker for Vue. Supports date, datetime and time modes, i18n and disabling dates.
+> FORK OF https://github.com/mariomka/vue-datetime - Mobile friendly datetime picker for Vue. Supports date, datetime and time modes, i18n and disabling dates.
 
-**NOTICE:** This README is related to next version (1.x) of vue-datetime. For the old release 0.x, [see here](https://github.com/mariomka/vue-datetime/tree/v0.x).
+**NOTICE:** This README is related to next version (1.0.x) of vue-datetime-custom. For the old release 0.x, [see here](https://github.com/mariomka/vue-datetime/tree/v0.x).
 
-## Demo
-
-**[Go to demo](http://mariomka.github.io/vue-datetime)**.
-
-[![demo](https://raw.githubusercontent.com/mariomka/vue-datetime/v1.x/demo/demo.gif)](http://mariomka.github.io/vue-datetime)
 
 ## Installation
+You have to intall Font-awesome for VueJs
 
 ### Bundler (Webpack, Rollup...)
 
 ```bash
-yarn add luxon vue-datetime weekstart
+yarn add luxon npm i vue-datetime-custom weekstart
 ```
 
 Or
 
 ```bash
-npm install --save luxon vue-datetime weekstart
+npm install --save luxon npm i vue-datetime-custom weekstart
 ```
 
 **weekstart** is optional, is used to get the first day of the week.
@@ -37,7 +33,7 @@ npm install --save luxon vue-datetime weekstart
 
 ```js
 import Vue from 'vue'
-import Datetime from 'vue-datetime'
+import Datetime from 'vue-datetime-custom'
 // You need a specific loader for CSS files
 import 'vue-datetime/dist/vue-datetime.css'
 
@@ -49,7 +45,7 @@ Vue.use(Datetime)
 ##### Global
 
 ```js
-import { Datetime } from 'vue-datetime';
+import { Datetime } from 'vue-datetime-custom';
 
 Vue.component('datetime', Datetime);
 ```

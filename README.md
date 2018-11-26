@@ -35,7 +35,7 @@ npm install --save luxon npm i vue-datetime-custom weekstart
 import Vue from 'vue'
 import Datetime from 'vue-datetime-custom'
 // You need a specific loader for CSS files
-import 'vue-datetime/dist/vue-datetime.css'
+import 'vue-datetime/dist/vue-datetime-custom.css'
 
 Vue.use(Datetime)
 ```
@@ -68,7 +68,7 @@ Vue.extend({
 Download vue, luxon, weekstart and vue-datetime or use a CDN like unpkg.
 
 ```html
-<link rel="stylesheet" href="vue-datetime.css"></link>
+<link rel="stylesheet" href="vue-datetime-custom.css"></link>
 <script src="vue.js"></script>
 <script src="luxon.js"></script>
 <script src="weekstart.js"></script>

@@ -7883,7 +7883,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
- * vue-datetime-custom v1.0.3
+ * vue-datetime-custom v1.0.4
  * (c) 2018 DOS SANTOS Christophe
  * Released under the MIT License.
  */
@@ -8733,7 +8733,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window.Vue.use(plugin);
   }
 
-  var version = '1.0.3';
+  var version = '1.0.4';
 
   exports['default'] = plugin;
   exports.Datetime = Datetime;

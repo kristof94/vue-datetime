@@ -1,33 +1,50 @@
 <template>
   <div class="vdatetime">
     <slot name="before"></slot>
-    <button class="vdatetime-input"
-           :class="inputClass"
-           :id="inputId"
-           :value="inputValue"
-           v-bind="$attrs"
-           v-on="$listeners"
-           @click="open"
-           @focus="open">
-    <input v-if="hiddenName" type="hidden" :name="hiddenName" :value="value" @input="setValue">
+    <span
+      :class="inputClass"
+      :id="inputId"
+      v-bind="$attrs"
+      v-on="$listeners"
+      @click="open"
+      @focus="open"
+    >
+      <font-awesome-icon :icon="['fa', 'calendar-alt']" />
+    </span>
+    <input
+      v-if="hiddenName"
+      type="hidden"
+      :name="hiddenName"
+      :value="value"
+      @input="setValue"
+    >
     <slot name="after"></slot>
-    <transition-group name="vdatetime-fade" tag="div">
-      <div key="overlay" v-if="isOpen" class="vdatetime-overlay" @click.self="cancel"></div>
+    <transition-group
+      name="vdatetime-fade"
+      tag="div"
+    >
+      <div
+        key="overlay"
+        v-if="isOpen"
+        class="vdatetime-overlay"
+        @click.self="cancel"
+      ></div>
       <datetime-popup
-          key="popup"
-          v-if="isOpen"
-          :type="type"
-          :datetime="popupDate"
-          :phrases="phrases"
-          :use12-hour="use12Hour"
-          :hour-step="hourStep"
-          :minute-step="minuteStep"
-          :min-datetime="popupMinDatetime"
-          :max-datetime="popupMaxDatetime"
-          @confirm="confirm"
-          @cancel="cancel"
-          :auto="auto"
-          :week-start="weekStart"></datetime-popup>
+        key="popup"
+        v-if="isOpen"
+        :type="type"
+        :datetime="popupDate"
+        :phrases="phrases"
+        :use12-hour="use12Hour"
+        :hour-step="hourStep"
+        :minute-step="minuteStep"
+        :min-datetime="popupMinDatetime"
+        :max-datetime="popupMaxDatetime"
+        @confirm="confirm"
+        @cancel="cancel"
+        :auto="auto"
+        :week-start="weekStart"
+      ></datetime-popup>
     </transition-group>
   </div>
 </template>
@@ -75,7 +92,7 @@ export default {
     },
     phrases: {
       type: Object,
-      default () {
+      default() {
         return {
           cancel: 'Cancel',
           ok: 'Ok'
@@ -108,13 +125,13 @@ export default {
     },
     weekStart: {
       type: Number,
-      default () {
+      default() {
         return weekStart()
       }
     }
   },
 
-  data () {
+  data() {
     return {
       isOpen: false,
       datetime: datetimeFromISO(this.value)
@@ -122,17 +139,17 @@ export default {
   },
 
   watch: {
-    value (newValue) {
+    value(newValue) {
       this.datetime = datetimeFromISO(newValue)
     }
   },
 
-  created () {
+  created() {
     this.emitInput()
   },
 
   computed: {
-    inputValue () {
+    inputValue() {
       let format = this.format
 
       if (!format) {
@@ -156,19 +173,19 @@ export default {
         return this.datetime ? this.datetime.setZone(this.zone).toLocaleString(format) : ''
       }
     },
-    popupDate () {
+    popupDate() {
       return this.datetime ? this.datetime.setZone(this.zone) : this.newPopupDatetime()
     },
-    popupMinDatetime () {
+    popupMinDatetime() {
       return this.minDatetime ? DateTime.fromISO(this.minDatetime).setZone(this.zone) : null
     },
-    popupMaxDatetime () {
+    popupMaxDatetime() {
       return this.maxDatetime ? DateTime.fromISO(this.maxDatetime).setZone(this.zone) : null
     }
   },
 
   methods: {
-    emitInput () {
+    emitInput() {
       let datetime = this.datetime ? this.datetime.setZone(this.valueZone) : null
 
       if (datetime && this.type === 'date') {
@@ -177,24 +194,24 @@ export default {
 
       this.$emit('input', datetime ? datetime.toISO() : '')
     },
-    open (event) {
+    open(event) {
       event.target.blur()
 
       this.isOpen = true
     },
-    close () {
+    close() {
       this.isOpen = false
       this.$emit('close')
     },
-    confirm (datetime) {
+    confirm(datetime) {
       this.datetime = datetime.toUTC()
       this.emitInput()
       this.close()
     },
-    cancel () {
+    cancel() {
       this.close()
     },
-    newPopupDatetime () {
+    newPopupDatetime() {
       let datetime = DateTime.utc().setZone(this.zone).set({ seconds: 0, milliseconds: 0 })
 
       if (this.popupMinDatetime && datetime < this.popupMinDatetime) {
@@ -217,7 +234,7 @@ export default {
 
       return datetime.set({ minute: roundedMinute })
     },
-    setValue (event) {
+    setValue(event) {
       this.datetime = datetimeFromISO(event.target.value)
       this.emitInput()
     }

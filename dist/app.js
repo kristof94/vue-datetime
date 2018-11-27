@@ -7883,7 +7883,7 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
 /*!
- * vue-datetime-custom v1.0.5
+ * vue-datetime-custom v1.0.6
  * (c) 2018 DOS SANTOS Christophe
  * Released under the MIT License.
  */
@@ -8628,6 +8628,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     },
 
     created: function created() {
+      this.$parent.$on('open', this.open);
       this.emitInput();
     },
 
@@ -8679,7 +8680,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
       },
       open: function open(event) {
         // event.target.blur()
-        this.$parent.$on('open', this.open);
         this.isOpen = true;
       },
       close: function close() {
@@ -8733,7 +8733,7 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
     window.Vue.use(plugin);
   }
 
-  var version = '1.0.5';
+  var version = '1.0.6';
 
   exports['default'] = plugin;
   exports.Datetime = Datetime;

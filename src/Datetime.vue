@@ -135,6 +135,7 @@ export default {
   },
 
   created () {
+    this.$parent.$on('open', this.open)
     this.emitInput()
   },
 
@@ -186,7 +187,6 @@ export default {
     },
     open (event) {
       // event.target.blur()
-      this.$parent.$on('open', this.open)
       this.isOpen = true
     },
     close () {

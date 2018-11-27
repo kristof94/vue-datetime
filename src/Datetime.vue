@@ -1,16 +1,6 @@
 <template>
   <div class="vdatetime">
     <slot name="before"></slot>
-    <span
-      :class="inputClass"
-      :id="inputId"
-      v-bind="$attrs"
-      v-on="$listeners"
-      @click="open"
-      @focus="open"
-    >
-      <font-awesome-icon :icon="['fa', 'calendar-alt']" />
-    </span>
     <input
       v-if="hiddenName"
       type="hidden"
@@ -195,8 +185,8 @@ export default {
       this.$emit('input', datetime ? datetime.toISO() : '')
     },
     open (event) {
-      event.target.blur()
-
+      // event.target.blur()
+      this.$parent.$on('open', this.open)
       this.isOpen = true
     },
     close () {

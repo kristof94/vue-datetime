@@ -50,6 +50,10 @@ export default {
   },
 
   props: {
+    emitName: {
+      type: String,
+      default: 'open'
+    },
     value: {
       type: String
     },
@@ -135,7 +139,7 @@ export default {
   },
 
   created () {
-    this.$parent.$on('open', this.open)
+    this.$parent.$on(this.emitName, this.open)
     this.emitInput()
   },
 
